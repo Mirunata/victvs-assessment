@@ -41,7 +41,7 @@ export default function ExamList() {
     if (dateFilter !== "") {
       setExamSessions((currentSessions) => {
         return currentSessions.filter((session) =>
-          session.Date.slice(0, 10) === filtersObject.date ? session : null
+          session.datetime.slice(0, 10) === dateFilter? session : null
         );
       });
     }
@@ -49,7 +49,8 @@ export default function ExamList() {
     if (nameFilter !== "") {
       setExamSessions((currentSessions) => {
         return currentSessions.filter((session) =>
-        session.CandidateName === filtersObject.name ? session : null
+        Array.isArray(session.candidates) && 
+        session.candidates.some((c) => c.name === nameFilter)
         );
       });
     }
@@ -57,11 +58,11 @@ export default function ExamList() {
     if (locationFilter !== "") {
       setExamSessions((currentSessions) => {
         return currentSessions.filter((session) =>
-          session.LocationName === filtersObject.location ? session : null
+          session.location.country === locationFilter ? session : null
         );
       });
     }
-  }, [filtersObject]);
+  }, [filtersObject, originalExamSessions]);
 
   return (
     <main className="ExamList">

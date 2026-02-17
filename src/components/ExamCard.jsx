@@ -7,6 +7,8 @@ export default function ExamCard({session}) {
   : "";
 
   //TODO: update display of schedule details
+
+  console.log('session data on exam card', session);
   return (
     <section className="ExamCard">
       <div className="SessionDetails">
@@ -16,7 +18,7 @@ export default function ExamCard({session}) {
         <p>Candidate: {candidateNames}</p>
       </div>
       <div className="LocationDetails">
-        <p>{datetime[0]}</p>
+        <p>{datetime}</p>
         <p>{time}</p>
         <p className="LocationName">{session?.location?.country}</p>
       </div>
