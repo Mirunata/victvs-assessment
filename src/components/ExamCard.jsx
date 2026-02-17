@@ -1,6 +1,10 @@
 export default function ExamCard({session}) {
 
-  const datetime = session.Date.split("T");
+  const datetime = session.datetime ? session.datetime.slice(0, 10) : "";
+  const time = session.datetime ? session.datetime.slice(11, 16) : "";
+  const candidateNames = Array.isArray(session?.candidates)
+  ? session.candidates.map((c) => c.name).join(", ")
+  : "";
 
   //TODO: update display of schedule details
   return (
@@ -9,12 +13,12 @@ export default function ExamCard({session}) {
         <h3>{session.Title}</h3>
         <p>{session.Description}</p>
         <p>{session.CandidateId}</p>
-        <p>Candidate: {session.CandidateName}</p>
+        <p>Candidate: {candidateNames}</p>
       </div>
       <div className="LocationDetails">
         <p>{datetime[0]}</p>
-        <p>{datetime[1].slice(0, -1)}</p>
-        <p className="LocationName">{session.LocationName}</p>
+        <p>{time}</p>
+        <p className="LocationName">{session?.location?.country}</p>
       </div>
     </section>
   );

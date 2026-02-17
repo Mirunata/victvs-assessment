@@ -5,7 +5,7 @@ export default function Home() {
       <section className="IntroductionText">
         <p>
           You can use this dummy Frontend as base for your project or create
-          your own Frontend for this technical test
+          your own Frontend for this technical test.
         </p>
       </section>
     </main>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ExamCard from "./ExamCard";
 import FilterModal from "./FilterModal";
+import api from "../utils/api";
 
 export default function ExamList() {
   const [examSessions, setExamSessions] = useState([]);
@@ -13,16 +14,31 @@ export default function ExamList() {
   });
 
   // TODO: Update the component with the exam session data
+
   useEffect(() => {
-    // fetchExamSessions().then((examSessionsData) => {
-    //   setExamSessions(examSessionsData);
-    //   setOriginalExamSessions(examSessionsData);
-    // });
+    const fetchExamSessions = async () => {
+      try{
+        const res = await api.get("/api/exams");
+        setExamSessions(res.data);
+        setOriginalExamSessions(res.data)
+      } catch (error)  {
+        setExamSessions([]);
+        setOriginalExamSessions([]);
+      }
+    }
+
+    fetchExamSessions();
   }, []);
 
   useEffect(() => {
+
     setExamSessions(originalExamSessions);
-    if (filtersObject.date !== "") {
+
+    const dateFilter = filtersObject.date;
+    const nameFilter = filtersObject.name;
+    const locationFilter = filtersObject.location;
+
+    if (dateFilter !== "") {
       setExamSessions((currentSessions) => {
         return currentSessions.filter((session) =>
           session.Date.slice(0, 10) === filtersObject.date ? session : null
@@ -30,15 +46,15 @@ export default function ExamList() {
       });
     }
 
-    if (filtersObject.name !== "") {
+    if (nameFilter !== "") {
       setExamSessions((currentSessions) => {
         return currentSessions.filter((session) =>
-          session.CandidateName === filtersObject.name ? session : null
+        session.CandidateName === filtersObject.name ? session : null
         );
       });
     }
 
-    if (filtersObject.location !== "") {
+    if (locationFilter !== "") {
       setExamSessions((currentSessions) => {
         return currentSessions.filter((session) =>
           session.LocationName === filtersObject.location ? session : null
