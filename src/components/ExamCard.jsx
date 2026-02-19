@@ -17,25 +17,28 @@ export default function ExamCard({ session, onAdvanceStatus }) {
 
   return (
       <div className="CardContainer">
-        <div className="InfoCard">
-            <div className="SessionDetails">
-              <h3>{session.title}</h3>
-              <p className="DatetimeMobile">{datetime}</p>
-              <p>Exam id: {session.id}</p>
-              <p>Candidates: {candidateNames}</p>
-            </div>
-            <div className="LocationDetails">
-              <p className="DatetimeWeb">{datetime}</p>
-              <p>{time}</p>
-              <p className="LocationName">{session?.location?.country}</p>
-            </div>
+        <div className="SessionDetails">
+          <div className="ExamTitle">
+                <h3>{session.title}</h3>
+          </div>
+          <div className="InfoCard">
+              <div className="InfoTest">
+                <p className="DatetimeMobile">{datetime}</p>
+                <p>Exam id: {session.id}</p>
+                <p>Candidates: {candidateNames}</p>
+              </div>
+              <div className="LocationDetails">
+                <p className="DatetimeWeb">{datetime}</p>
+                <p>{time}</p>
+                <p className="LocationName">{session?.location?.country}</p>
+              </div>
+          </div>
         </div>
         <div>
           <button
             className="StatusButton"
             disabled={!actionLabel}
             onClick={() => {
-              console.log("BUTTON CLICKED", session.id, session.status);
               onAdvanceStatus(session.id, session.status);
             }}
           >

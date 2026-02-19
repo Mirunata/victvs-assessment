@@ -91,7 +91,7 @@ export default function FilterModal(props) {
           </div>
           <div className="ButtonField">
             <button
-              className="FilterButton"
+              className="AddFilterBtn"
               id="AddFilterButton"
               onClick={() =>
                 handleAddFilters(filterDate, filterName, filterLocation)

@@ -266,12 +266,16 @@ label {
     font-family: EloquiaLight;
     border-bottom: 1px solid #ffffff;
 }
+.SessionDetails {
+    display: flex;
+    flex-direction: column;
+}
 
 .CardContainer {
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
-    padding: 15px;
+    padding: 20px;
     color: #02020a;
     border-radius: 15px;
     margin: 15px;
@@ -285,7 +289,11 @@ label {
     gap:10px;
     justify-content: space-between;
 }
-
+.InfoTest {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
 
 .StatusButton {
     font-family: Neuzeit;
@@ -310,6 +318,11 @@ label {
     visibility: visible; 
 }
 
+.AddFilterBtn {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
 @media screen and (min-width: 769px) {
     .Header {
         display: flex;
@@ -329,6 +342,7 @@ label {
         font-size: larger;
         margin: 5px;
     }
+
     .CardContainer {
         width: 35%;
     }
@@ -347,7 +361,8 @@ label {
 @media screen and (min-width: 583px) and (max-width: 768px) {
     .CardContainer {
         width: 55%;
-    }  }
+    }  
+}
 @media screen and (max-width: 321px) {
     .Link {
         font-size: medium;
