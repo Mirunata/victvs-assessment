@@ -132,6 +132,7 @@ p {
 
 .LocationDetails {
     text-align: right;
+    background-color: aquamarine;
 }
 
 .LocationDetails p {
@@ -262,6 +263,24 @@ label {
 .Footer p span {
     font-family: EloquiaLight;
     border-bottom: 1px solid #ffffff;
+}
+
+.SessionDetails {
+    background-color: aqua;
+}
+
+.Potato {
+    display: flex;
+    flex-direction: column;
+}
+
+.InfoCard {
+    display: flex;
+    flex-direction: row;
+}
+
+.ButtonSection {
+    background-color: brown;
 }
 
 @media screen and (min-width: 769px) {

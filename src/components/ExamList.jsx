@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ExamCard from "./ExamCard";
 import FilterModal from "./FilterModal";
-import api from "../utils/api";
+import api, { updateExamStatus } from "../utils/api";
 
 export default function ExamList() {
   const [examSessions, setExamSessions] = useState([]);
@@ -12,6 +12,8 @@ export default function ExamList() {
     name: "",
     location: "",
   });
+
+  const status = examSessions.status;
 
   // TODO: Update the component with the exam session data
 
@@ -64,6 +66,80 @@ export default function ExamList() {
     }
   }, [filtersObject, originalExamSessions]);
 
+  // const handleAdvanceStatus = async (examId, currentStatus) => {
+
+  //   console.log("CLICKED:", examId, currentStatus);
+
+  //   const nextStatus =
+  //     currentStatus === "Pending" ? "started" :
+  //     currentStatus === "Started" ? "finished" :
+  //     null;
+  
+  //   if (!nextStatus) return;
+
+  //   console.log("NEXT STATUS:", nextStatus);
+  
+  //   try {
+  
+  //     await updateExamStatus(examId, nextStatus);
+  
+  //     const applyUpdate = (list) =>
+  //       list.map((item) =>
+  //         item.id === examId
+  //           ? { ...item, status: nextStatus[0].toUpperCase() + nextStatus.slice(1) } // "started" -> "Started"
+  //           : item
+  //       );
+  
+  //     setOriginalExamSessions((prev) => applyUpdate(prev));
+  //     setExamSessions((prev) => applyUpdate(prev));
+  //   } catch (error) {
+  //     console.error("PATCH failed:", error);
+  //   }
+  // };
+
+  const handleAdvanceStatus = async (examId, currentStatus) => {
+
+    // ✅ 1 — Did the click reach the handler?
+    console.log("CLICKED:", examId, currentStatus);
+  
+    const nextStatus =
+      currentStatus === "Pending" ? "started" :
+      currentStatus === "Started" ? "finished" :
+      null;
+  
+    // ✅ 2 — Did we compute the next status correctly?
+    console.log("NEXT STATUS:", nextStatus);
+  
+    if (!nextStatus) return;
+  
+    try {
+  
+      // ✅ 3 — Are we sending the correct PATCH data?
+      console.log("SENDING PATCH:", examId, nextStatus);
+  
+      await updateExamStatus(examId, nextStatus);
+  
+      // ✅ 4 — Did the backend accept it?
+      console.log("PATCH SUCCESS");
+  
+      const applyUpdate = (list) =>
+        list.map((item) =>
+          item.id === examId
+            ? { ...item, status: nextStatus[0].toUpperCase() + nextStatus.slice(1) }
+            : item
+        );
+  
+      setOriginalExamSessions((prev) => applyUpdate(prev));
+      setExamSessions((prev) => applyUpdate(prev));
+  
+      // ✅ 5 — Did state update run?
+      console.log("STATE UPDATED");
+  
+    } catch (error) {
+      console.error("PATCH FAILED:", error);
+    }
+  };
+    
   return (
     <main className="ExamList">
       <div>
@@ -91,7 +167,11 @@ export default function ExamList() {
       <div id="SessionList">
         {examSessions.length ? (
           examSessions.map((session) => (
-            <ExamCard session={session} key={session.id} />
+            <ExamCard 
+            session={session} 
+            key={session.id} 
+            onAdvanceStatus={handleAdvanceStatus}
+            />
           ))
         ) : (
           <p>No sessions to display...</p>

@@ -2,6 +2,7 @@
     "name": "exam-frontend",
     "version": "0.1.0",
     "private": true,
+    "proxy": "https://mdvictvs.victvs.co.uk/tech-test",
     "dependencies": {
         "@react-google-maps/api": "^2.18.1",
         "@testing-library/jest-dom": "^5.16.5",
@@ -39,5 +40,8 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "html-webpack-plugin": "^5.6.6"
     }
 }
