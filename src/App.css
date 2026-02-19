@@ -114,13 +114,13 @@ p {
 
 .ExamCard {
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: flex-end;
     color: #02020a;
     background-color: #ffffff;
     padding: 12px;
     border-radius: 12px;
-    margin: 12px 5vw;
+    margin: 12px;
     text-align: left;
 }
 
@@ -132,7 +132,9 @@ p {
 
 .LocationDetails {
     text-align: right;
-    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .LocationDetails p {
@@ -203,7 +205,7 @@ label {
     background-color: #02020a;
     padding: 10px;
     margin: 10px;
-    width: 90%;
+    width: 50%;
     color: #ffffff;
     border-radius: 6px;
     border: 1px solid #02020a;
@@ -265,22 +267,47 @@ label {
     border-bottom: 1px solid #ffffff;
 }
 
-.SessionDetails {
-    background-color: aqua;
-}
-
-.Potato {
+.CardContainer {
     display: flex;
     flex-direction: column;
+    background-color: #ffffff;
+    padding: 15px;
+    color: #02020a;
+    border-radius: 15px;
+    margin: 15px;
+    text-align: left;
+    width: 70%;
 }
 
 .InfoCard {
     display: flex;
     flex-direction: row;
+    gap:10px;
+    justify-content: space-between;
 }
 
-.ButtonSection {
-    background-color: brown;
+
+.StatusButton {
+    font-family: Neuzeit;
+    padding: 10px;
+    font-size: medium;
+    margin: 5px;
+    color: #02020a;
+    border-radius: 12px;
+    border: 1px solid black;
+}
+.StatusButton:disabled {
+    background-color: #a2eaa2;
+    color: #02020a;
+    border: 1px solid #aaa;
+    cursor: not-allowed;
+  }
+
+  .DatetimeWeb { 
+    visibility: hidden; 
+}
+  .DatetimeMobile { 
+    visibility: visible; 
 }
 
 @media screen and (min-width: 769px) {
@@ -302,11 +329,25 @@ label {
         font-size: larger;
         margin: 5px;
     }
-    .ExamCard {
-        width: 50%;
+    .CardContainer {
+        width: 35%;
+    }
+
+    .DatetimeMobile { 
+        visibility: hidden; 
+    }
+    .DatetimeWeb { 
+        visibility: visible; 
+    }
+    .Button {
+        width: 20%;
     }
 }
 
+@media screen and (min-width: 583px) and (max-width: 768px) {
+    .CardContainer {
+        width: 55%;
+    }  }
 @media screen and (max-width: 321px) {
     .Link {
         font-size: medium;

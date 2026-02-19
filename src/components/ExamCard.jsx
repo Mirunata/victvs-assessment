@@ -15,36 +15,33 @@ export default function ExamCard({ session, onAdvanceStatus }) {
     
   //TODO: update display of schedule details
 
-  // console.log('session data on exam card', session);
   return (
-    <section className="ExamCard">
-      <div className="Potato">
+      <div className="CardContainer">
         <div className="InfoCard">
-      <div className="SessionDetails">
-        <h3>{session.title}</h3>
-        <p>{session.id}</p>
-        <p>Candidates: {candidateNames}</p>
-      </div>
-      <div className="LocationDetails">
-        <p>{datetime}</p>
-        <p>{time}</p>
-        <p className="LocationName">{session?.location?.country}</p>
-      </div>
+            <div className="SessionDetails">
+              <h3>{session.title}</h3>
+              <p className="DatetimeMobile">{datetime}</p>
+              <p>Exam id: {session.id}</p>
+              <p>Candidates: {candidateNames}</p>
+            </div>
+            <div className="LocationDetails">
+              <p className="DatetimeWeb">{datetime}</p>
+              <p>{time}</p>
+              <p className="LocationName">{session?.location?.country}</p>
+            </div>
         </div>
-      <div className="ButtonSection">
-        <button
-          className="FilterButton"
-          disabled={!actionLabel}
-          // onClick={() => onAdvanceStatus(session.id, session.status)}
-          onClick={() => {
-            console.log("BUTTON CLICKED", session.id, session.status);
-            onAdvanceStatus(session.id, session.status);
-          }}
-        >
-        {actionLabel ? actionLabel : "Completed"}
-        </button>
+        <div>
+          <button
+            className="StatusButton"
+            disabled={!actionLabel}
+            onClick={() => {
+              console.log("BUTTON CLICKED", session.id, session.status);
+              onAdvanceStatus(session.id, session.status);
+            }}
+          >
+          {actionLabel ? actionLabel : "Completed"}
+          </button>
+        </div>
       </div>
-      </div>
-    </section>
   );
 }
