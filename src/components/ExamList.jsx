@@ -96,30 +96,18 @@ export default function ExamList() {
   
 
   const handleAdvanceStatus = async (examId, currentStatus) => {
-
-    // 1 Did the click reach the handler?
-    console.log("CLICKED:", examId, currentStatus);
   
     const nextStatus =
       currentStatus === "Pending" ? "started" :
       currentStatus === "Started" ? "finished" :
       null;
   
-    // 2 Did we compute the next status correctly?
-    console.log("NEXT STATUS:", nextStatus);
-  
     if (!nextStatus) return;
   
     try {
-  
-      // 3 Are we sending the correct PATCH data?
-      console.log("SENDING PATCH:", examId, nextStatus);
-  
+    
       await updateExamStatus(examId, nextStatus);
-  
-      // 4 Did the backend accept it?
-      console.log("PATCH SUCCESS");
-  
+    
       const applyUpdate = (list) =>
         list.map((item) =>
           item.id === examId
@@ -130,8 +118,6 @@ export default function ExamList() {
       setOriginalExamSessions((prev) => applyUpdate(prev));
       setExamSessions((prev) => applyUpdate(prev));
   
-      // 5 Did state update run?
-      console.log("STATE UPDATED");
   
     } catch (error) {
       console.error("PATCH FAILED:", error);

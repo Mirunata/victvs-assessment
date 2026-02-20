@@ -25,7 +25,7 @@ html {
 .App {
     text-align: center;
     height: 100%;
-    background-color: #02020a;
+    background-color: #1b1b20;
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -38,7 +38,6 @@ p {
 }
 
 .Header {
-    margin-top: 36px;
     padding: 16px;
     font-size: 3rem;
     font-family: EloquiaBold;
@@ -46,7 +45,6 @@ p {
 }
 
 .Header h1 {
-    margin: -10px;
     line-height: 0%;
     font-size: 3.4rem;
 }
@@ -54,7 +52,7 @@ p {
 .Header span {
     font-family: EloquiaLight;
     font-size: 2.2rem;
-    border-bottom: 1px solid #ffffff;
+    /* border-bottom: 1px solid #ffffff; */
 }
 
 .Link {
@@ -79,7 +77,12 @@ p {
 
 .Navigation {
     font-size: 1.5rem;
-    margin-top: 36px;
+    margin-top: 20px;
+}
+
+.LogoSpace {
+    display: flex;
+    flex-direction: column;
 }
 
 .MainLinks {
@@ -262,6 +265,7 @@ label {
 
 .ButtonField {
     display: flex;
+    margin-top: -10px;
 }
 
 .GoogleMap {
@@ -338,15 +342,24 @@ label {
     border-radius: 10px;
 }
 
+.LogoSpace {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Logo {
+    width: 200px;
+    height: 52px;
+}
+
 @media screen and (min-width: 769px) {
     .Header {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
     }
-    .Navigation {
-        margin: 0;
-    }
+
     .IntroductionText p {
         font-size: larger;
     }
@@ -377,7 +390,12 @@ label {
     }
 
     .ModalContentSort {
-        width: 40vw;
+            width: 40vw;
+    }
+    
+    .Logo {
+        width: 300px;
+        height: 78px;
     }
 }
 
