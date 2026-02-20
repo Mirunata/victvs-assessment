@@ -157,13 +157,13 @@ export default function ExamList() {
             className="FilterButton"
             onClick={() => setHideFilterModal(false)}
           >
-            👁 Show Filters
+            👁 Filters
           </button>
           <button
             className="FilterButton"
             onClick={() => setExamSessions(originalExamSessions)}
           >
-            ↻ Reset Filters
+            ↻ Reset
           </button>
           <button className="FilterButton" onClick={() => setHideSortModal(false)}>
           ✨ Sort

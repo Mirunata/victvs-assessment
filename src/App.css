@@ -163,11 +163,15 @@ p {
 }
 
 .ModalContent {
-    width: 80vw;
+    width: 70vw;
     border-radius: 12px;
     background-color: #ffffff;
 }
-
+.ModalContentSort {
+    width: 70vw;
+    border-radius: 12px;
+    background-color: #ffffff;
+}
 .ModalHeader,
 .ModalFooter {
     padding: 10px;
@@ -180,6 +184,18 @@ p {
 .ModalBody {
     padding: 12px 10px;
     margin-left: 5%;
+}
+
+.ModalBodySort {
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.SortLabel {
+    margin-bottom: 5px;
 }
 
 input {
@@ -246,7 +262,6 @@ label {
 
 .ButtonField {
     display: flex;
-    margin-top: -10px;
 }
 
 .GoogleMap {
@@ -355,6 +370,14 @@ label {
     }
     .Button {
         width: 20%;
+    }
+
+    .ModalContent {
+        width: 40vw;
+    }
+
+    .ModalContentSort {
+        width: 40vw;
     }
 }
 

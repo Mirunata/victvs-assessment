@@ -36,14 +36,14 @@ export default function SortModal(props) {
 
   return (
     <div className="FilterModal">
-      <div className="ModalContent">
+      <div className="ModalContentSort">
         <div className="ModalHeader">
           <h4 className="ModalTitle">Sort Exam Sessions</h4>
         </div>
 
-        <div className="ModalBody">
+        <div className="ModalBodySort">
           <div className="FilterField">
-            <label htmlFor="sort-field">Sort By</label>
+            <label htmlFor="sort-field" className="SortLabel">Sort By</label>
             <select
               id="sort-field"
               value={sortField}
@@ -57,7 +57,7 @@ export default function SortModal(props) {
           </div>
 
           <div className="FilterField">
-            <label htmlFor="sort-direction">Direction</label>
+            <label htmlFor="sort-direction" className="SortLabel">Direction</label>
             <select
               id="sort-direction"
               value={sortDirection}
