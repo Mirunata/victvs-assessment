@@ -1,12 +1,11 @@
 export default function Home() {
   return (
-    <main className="Home">
-      <h2>Introduction...</h2>
-      <section className="IntroductionText">
-        <p>
-          You can use this dummy Frontend as base for your project or create
-          your own Frontend for this technical test.
-        </p>
+    <main className="Home"> 
+      <section className="Hero">
+        <h1>
+          Assesment, technology, people and infrastructure.
+        </h1>
+        <h2>Global solutions for 21st Century awarding organisations.</h2>
       </section>
     </main>
   );
